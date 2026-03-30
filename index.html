@@ -1,23 +1,670 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Home</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <!--
-      Need a visual blank slate?
-      Remove all code in `styles.css`!
-    -->
-    <link rel="stylesheet" href="styles.css" />
-    <script type="module" src="script.js"></script>
-  </head>
-  <body>
-    <nav>
-      <a href="/" aria-current="page">Home</a>
-      <a href="/page2.html">Other page</a>
+
+  <!-- JSON-LD Structured Data for SEO -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "serviceType": "제네시스 G90 리스 서비스",
+      "provider": {
+        "@type": "Organization",
+        "name": "프리미엄 리스 전문 컨설팅",
+        "url": "https://yourdomain.com",
+        "sameAs": [
+          "https://www.facebook.com/yourpage",
+          "https://www.instagram.com/yourpage"
+        ]
+      },
+      "areaServed": "대한민국",
+      "description": "2026년 최신 제네시스 G90 리스 견적을 분석하고, 합리적인 조건으로 차량을 이용할 수 있도록 돕는 전문 컨설팅 서비스입니다. 월 납입금, 초기 비용, 잔존 가치 등을 상세히 비교해 드립니다.",
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "제네시스 G90 리스 및 렌트 상품 안내",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "G90 장기 리스"
+            },
+            "description": "개인 및 법인 사업자 대상 장기 계약 리스 상품. 세금 절감 효과 제공."
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "G90 장기 렌트"
+            },
+            "description": "보험, 세금 걱정 없이 이용 가능한 렌트 상품. 렌트 번호판(하, 허, 호) 사용."
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "G90 중고 리스 승계"
+            },
+            "description": "기존 리스 고객의 차량을 이어받아 이용하는 중고 승계 상품. 즉시 출고 가능."
+          }
+        ]
+      }
+    }
+  </script>
+
+  <!-- Google Fonts for professional look -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+
+  <style>
+    /* Reset and Typography */
+    body {
+      font-family: "Noto Sans KR", sans-serif;
+      margin: 0;
+      padding: 0;
+      line-height: 1.8; /* 가독성을 높이기 위해 1.6에서 1.8로 변경 */
+      background-color: #f7f9fc; /* 부드러운 배경색 */
+      color: #333;
+    }
+    header {
+      background-color: #0c1c3f; /* 제네시스 G90의 딥블루 색상 */
+      color: white;
+      padding: 3rem 1rem 2rem;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    }
+    header h1 {
+      font-size: 2.8rem;
+      font-weight: 800;
+      margin-bottom: 0.8rem;
+      letter-spacing: -1px;
+    }
+    header p {
+      font-size: 1.1rem;
+      font-weight: 300;
+      opacity: 0.8;
+    }
+    nav ul {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 1.5rem;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: color 0.3s ease;
+      position: relative;
+      padding: 0.5rem 0;
+    }
+    nav a:hover, nav a:focus {
+      color: #ffd700; /* 황금색 강조 */
+    }
+    /* Main Content Layout */
+    main {
+      max-width: 1000px;
+      margin: 3rem auto;
+      padding: 0 2rem;
+      background-color: white;
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.05);
+      border-radius: 16px;
+    }
+    section {
+      padding: 3rem 0;
+      border-bottom: 1px dashed #e0e0e0;
+    }
+    section:last-child {
+      border-bottom: none;
+    }
+    h2 {
+      font-size: 2rem;
+      color: #0c1c3f;
+      margin-bottom: 1rem;
+      font-weight: 700;
+      border-left: 5px solid #ffd700;
+      padding-left: 1rem;
+    }
+    h3 {
+      font-size: 1.4rem;
+      color: #333;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+
+    /* Keywords and Tags */
+    .keyword-tags {
+      margin: 2rem 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .keyword-tags a {
+      background-color: #e6f7ff; /* light blue background */
+      color: #0c1c3f;
+      padding: 10px 18px;
+      border-radius: 25px;
+      font-size: 0.9rem;
+      text-decoration: none;
+      font-weight: 500;
+      transition: background-color 0.3s ease;
+    }
+    .keyword-tags a:hover {
+      background-color: #cceeff;
+    }
+
+    /* Image Styling */
+    .image-container {
+      margin: 2rem 0;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+    .image-container img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Tables */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 2rem 0;
+      font-size: 0.95rem;
+    }
+    th, td {
+      padding: 1.2rem;
+      border: 1px solid #e0e0e0;
+      text-align: left;
+    }
+    th {
+      background-color: #f7f9fc;
+      color: #0c1c3f;
+      font-weight: 700;
+      border-top: 3px solid #0c1c3f;
+    }
+
+    /* Accordion (FAQ) */
+    dl dt {
+      font-weight: 700;
+      margin-top: 1.5rem;
+      cursor: pointer;
+      color: #34495e;
+      font-size: 1.1rem;
+      background-color: #fcfcfc;
+      padding: 1rem;
+      border-radius: 8px;
+      border: 1px solid #eee;
+      position: relative;
+    }
+    dl dt:hover {
+      background-color: #f0f0f0;
+    }
+    dl dt::after {
+      content: '+';
+      position: absolute;
+      right: 1rem;
+      font-size: 1.2rem;
+      color: #0c1c3f;
+      transition: transform 0.3s;
+    }
+    dl dt.active::after {
+      content: '-';
+      transform: rotate(180deg);
+    }
+    dl dd {
+      margin-left: 0;
+      margin-bottom: 1.5rem;
+      display: none;
+      background-color: #ffffff;
+      padding: 1rem;
+      border-radius: 8px;
+      border-left: 3px solid #ffd700;
+    }
+    dl dt.active + dd {
+      display: block;
+    }
+
+    /* Input Fields and Forms */
+    .form-section {
+      background-color: #f9f9f9;
+      padding: 2rem;
+      border-radius: 12px;
+      margin: 2rem 0;
+    }
+    .form-section label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+      color: #333;
+    }
+    .form-section input[type="text"], .form-section input[type="tel"], .form-section select {
+      width: calc(100% - 24px);
+      padding: 12px;
+      margin-bottom: 1rem;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      box-sizing: border-box;
+    }
+    .form-section button {
+      background-color: #ffd700; /* 황금색 버튼 */
+      color: #0c1c3f;
+      font-weight: 700;
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1.1rem;
+      transition: background-color 0.3s ease;
+    }
+    .form-section button:hover {
+      background-color: #e6c300;
+    }
+
+    /* Call to Action */
+    .cta-button {
+      display: block;
+      width: fit-content;
+      margin: 3rem auto;
+      background-color: #0c1c3f;
+      color: white;
+      font-weight: 700;
+      padding: 1.5rem 3rem;
+      border-radius: 50px;
+      text-decoration: none;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      text-align: center;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      font-size: 1.2rem;
+    }
+    .cta-button:hover {
+      background-color: #1a3a70;
+      transform: translateY(-3px);
+    }
+
+    /* External Links */
+    .external-links {
+      margin-top: 2rem;
+      padding: 1rem;
+      background-color: #f9f9f9;
+      border-radius: 8px;
+    }
+    .external-links h3 {
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 0.5rem;
+    }
+    .external-links a {
+      color: #0c1c3f;
+      text-decoration: none;
+      font-weight: 500;
+      display: inline-block;
+      margin-right: 20px;
+      margin-bottom: 10px;
+      border-bottom: 1px dotted #0c1c3f;
+    }
+    .external-links a:hover {
+      color: #ffd700;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 2.5rem;
+      font-size: 0.9rem;
+      color: #777;
+      background-color: #e9ecef;
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>제네시스G90 리스 견적 비교 가이드 2026</h1>
+    <p>럭셔리 세단의 기준, 제네시스G90을 가장 합리적인 조건으로 소유하는 방법</p>
+    <nav aria-label="메인 메뉴">
+      <ul>
+        <li><a href="#intro">G90 리스란?</a></li>
+        <li><a href="#analysis">모델 상세 분석</a></li>
+        <li><a href="#cost-guide">비용 및 견적</a></li>
+        <li><a href="#compare">장단점 비교</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#contact">견적 문의</a></li>
+      </ul>
     </nav>
-    <main>
-      <h1>Home page</h1>
-    </main>
-  </body>
-</html>
+  </header>
+
+  <main>
+    <section id="intro">
+      <h2>제네시스G90 리스, 현명한 선택을 위한 첫걸음 💎</h2>
+      <p>럭셔리 플래그십 세단 제네시스G90은 첨단 기술과 최상의 승차감을 제공하며 많은 이들의 드림카로 손꼽힙니다. 하지만 1억 원을 호가하는 높은 차량 가격 때문에 직접 구매를 망설이는 분들이 많습니다. 이러한 분들을 위해 **제네시스G90 리스**는 가장 효율적이고 합리적인 대안으로 떠오르고 있습니다. 리스 계약은 초기 비용에 대한 부담을 줄이고, 정기적인 월 납입금으로 G90을 운용할 수 있게 해줍니다. 특히 개인 사업자나 법인 고객에게는 비용 처리와 절세 효과라는 큰 **장점**이 있어 인기가 높습니다.</p>
+
+      <div class="keyword-tags" aria-label="연관 키워드">
+        <a href="#cost-guide">제네시스G90리스가격</a>
+        <a href="#cost-guide">G90견적</a>
+        <a href="#compare">G90장단점</a>
+        <a href="#compare">G90리스장기렌트차이점</a>
+        <a href="#analysis">2026년 G90 모델</a>
+        <a href="#cost-guide">월납입금계산</a>
+        <a href="#compare">G90리스저렴한곳</a>
+        <a href="#faq">리스조건</a>
+        <a href="#contact">G90프로모션</a>
+        <a href="#intro">내돈내산G90후기</a>
+      </div>
+
+      <p>저희는 **믿을 수 있는 이사짐센터**처럼, 고객님의 상황에 맞는 최적의 금융 상품을 찾아드리는 **전문 컨설팅 업체**입니다. 이 페이지에서는 **제네시스G90 리스 견적**을 투명하게 공개하고, 리스 이용 시 발생하는 모든 비용과 혜택을 상세히 비교 분석합니다. 특히 2026년형 **제네시스G90** 모델의 출시와 함께 변화하는 시장 동향을 반영하여, 고객님이 **최저가**로 G90을 운용할 수 있도록 돕습니다. 제네시스 G90 리스는 복잡한 금융 상품처럼 보일 수 있지만, 저희 가이드와 함께라면 누구나 쉽게 이해하고 현명하게 선택할 수 있습니다.</p>
+      <div class="image-container">
+        <!-- Pexels source image: https://www.pexels.com/photo/genesis-g90-2020-in-dark-blue-color-4648710/ -->
+        <img src="https://images.pexels.com/photos/4648710/pexels-photo-4648710.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="제네시스 G90 리스 차량 이미지">
+      </div>
+    </section>
+
+    <section id="analysis">
+      <h2>2026년형 제네시스G90 모델 상세 분석 및 사양 비교</h2>
+      <p>G90 리스 견적을 정확하게 비교하려면 차량의 기본 모델과 옵션에 대한 이해가 필수적입니다. 제네시스G90은 롱 휠 베이스(Long Wheel Base) 모델을 포함하여 다양한 사양을 제공합니다. 2026년형 모델은 이전 모델 대비 더욱 강화된 첨단 기술과 편의 사양을 탑재하고 있습니다. 어떤 모델을 선택하느냐에 따라 **G90 리스 월 납입금**이 크게 달라지므로, 자신의 운행 목적과 예산을 고려하여 신중하게 선택해야 합니다.</p>
+
+      <h3>제네시스 G90 주요 트림별 기본 사양 비교 (2026년 예상 기준)</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>구분</th>
+            <th>G90 3.5 T-GDI AWD</th>
+            <th>G90 3.5 T-GDI AWD LWB</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>엔진/구동방식</td>
+            <td>3.5L 가솔린 트윈 터보 / AWD (사륜구동)</td>
+            <td>3.5L 가솔린 트윈 터보 / AWD (사륜구동)</td>
+          </tr>
+          <tr>
+            <td>차체 크기 (전장)</td>
+            <td>5,275 mm</td>
+            <td>5,465 mm (롱 휠 베이스)</td>
+          </tr>
+          <tr>
+            <td>주요 특징</td>
+            <td>프리미엄 세단의 표준. 기본 사양으로도 충분한 럭셔리 경험 제공.</td>
+            <td>뒷좌석 공간 극대화. 회장님차로 불리는 최상위 트림.</td>
+          </tr>
+          <tr>
+            <td>기본 가격 (예상)</td>
+            <td>약 9,500만 원부터 시작</td>
+            <td>약 1억 6,000만 원부터 시작</td>
+          </tr>
+          <tr>
+            <td>주요 옵션 (선택 가능)</td>
+            <td>파퓰러 패키지, 뒷좌석 컴포트 패키지, 뱅앤올룹슨 사운드 시스템 등</td>
+            <td>빌트인 캠, 뒷좌석 VIP 시트, 전동식 선셰이드 등 풀옵션 사양 기본 탑재.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>G90 리스는 특히 **풀옵션** 차량을 선택할 때 초기 구매 비용 부담이 높아지는 것을 해소해줍니다. 차량의 기본 가격 외에도 옵션 추가 금액, 취등록세, 보험료 등이 모두 리스료에 포함되기 때문입니다. 따라서 G90 **풀옵션** 모델을 고려한다면, 리스 계약이 훨씬 합리적일 수 있습니다. G90 **견적** 비교 시에는 단순히 월 **리스료**만을 볼 것이 아니라, 총 운용 비용과 계약 만료 시점의 **잔존 가치**를 함께 고려해야 합니다.</p>
+
+      <h3>G90 리스 이용 시 고려할 옵션 선택 가이드</h3>
+      <p>G90 모델은 다양한 옵션 패키지를 제공합니다. 이 옵션들은 리스 비용에 직접적인 영향을 미치므로 신중한 선택이 필요합니다. 예를 들어 '파퓰러 패키지'는 선호도가 높지만, '뱅앤올룹슨 프리미엄 3D 사운드 시스템'과 같은 고가 옵션은 리스료를 상당폭 상승시킵니다. 따라서 **제네시스G90 리스** 계약 전, 필수 옵션과 사치 옵션을 구분하여 견적을 비교하는 것이 좋습니다. 저희 전문 업체는 고객님의 운행 패턴과 선호도에 따라 불필요한 옵션을 제외한 **저렴한곳** 견적을 제시해 드릴 수 있습니다.</p>
+    </section>
+
+    <section id="cost-guide">
+      <h2>제네시스 G90 리스 비용 견적 및 월 납입금 분석</h2>
+      <p>**제네시스G90 리스 비용**은 단순히 차량 가격만을 기준으로 산정되지 않습니다. 계약 기간, 보증금 유무, 잔존 가치 설정, 운행 거리(약정 주행거리) 등 다양한 요인들이 복합적으로 작용합니다. 이러한 요인들을 조합하여 자신에게 가장 유리한 **최저가** 조건을 찾아야 합니다. 리스는 **장기렌트**와 다르게 일반 번호판을 사용하며, 금융 상품으로 분류되어 사업자에게 유리한 세금 혜택을 제공합니다.</p>
+
+      <h3>G90 리스 비용을 결정하는 주요 요인</h3>
+      <ul>
+        <li><strong>차량가 (Vehicle Price):</strong> 선택한 트림과 옵션에 따라 기본 가격이 달라집니다. 롱 휠 베이스 모델은 일반 모델보다 월 납입금이 훨씬 높습니다.</li>
+        <li><strong>계약 기간 (Lease Term):</strong> 보통 36개월, 48개월, 60개월 중 선택합니다. 일반적으로 계약 기간이 길어질수록 월 납입금은 낮아지지만, 총 이자 비용은 증가할 수 있습니다.</li>
+        <li><strong>잔존 가치 (Residual Value):</strong> 계약 만기 시점의 차량 가치를 의미합니다. 잔존 가치가 높게 책정될수록 월 리스료는 낮아집니다. G90과 같은 고급 차량은 감가상각이 적어 잔존 가치 설정이 비교적 유리합니다.</li>
+        <li><strong>보증금 (Security Deposit) 및 선납금 (Prepayment):</strong> 보증금은 계약 종료 후 돌려받지만, 선납금은 리스료를 미리 납부하는 것이므로 소멸됩니다. 초기 비용을 줄이려면 **무보증 리스**를 선택할 수 있지만, 이때 이자율이 높아질 수 있습니다.</li>
+        <li><strong>운행 거리 (Mileage Limit):</strong> 연간 약정 주행거리를 초과하면 위약금이 발생합니다. 자신의 운행 습관에 맞는 거리를 설정해야 합니다.</li>
+      </ul>
+
+      <h3>제네시스 G90 리스 견적 예시 (2026년 예상 기준)</h3>
+      <p>아래 표는 G90 3.5 T-GDI AWD 모델(차량가 약 1억 원 기준)에 대한 리스 견적 예시입니다. 실제 견적은 금융사 및 프로모션에 따라 달라질 수 있습니다.</p>
+      <table>
+        <thead>
+          <tr>
+            <th>구분</th>
+            <th>보증금 0% (무보증 리스)</th>
+            <th>보증금 30% (초기 비용 있음)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>계약 기간 (36개월)</td>
+            <td>월 납입금 약 180만원 ~ 200만원</td>
+            <td>월 납입금 약 130만원 ~ 150만원</td>
+          </tr>
+          <tr>
+            <td>계약 기간 (48개월)</td>
+            <td>월 납입금 약 160만원 ~ 180만원</td>
+            <td>월 납입금 약 110만원 ~ 130만원</td>
+          </tr>
+          <tr>
+            <td>계약 만료 시</td>
+            <td colspan="2">차량 반납 또는 잔존 가치 납부 후 인수 선택 가능</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>G90 리스는 특히 **내돈내산**으로 구매 시 발생하는 감가상각 부담이 크기 때문에, 리스를 통한 운용이 경제적으로 유리할 수 있습니다. **2026년** 시장 동향에 따르면 금리 변동성으로 인해 리스 상품의 **평균 가격**이 상승할 수 있으므로, 전문가와 상담하여 금리 확정형 상품을 선택하는 것이 중요합니다.</p>
+
+      <div class="form-section">
+        <h3>G90 리스료 간편 계산기 (예상 견적)</h3>
+        <p>원하는 조건을 입력하여 대략적인 월 납입금을 예측해 보세요. 이는 실제 견적과 다를 수 있습니다.</p>
+        <form id="lease-calculator">
+          <label for="car-model">모델 선택:</label>
+          <select id="car-model">
+            <option value="g90-standard">G90 3.5 T-GDI AWD (약 1억)</option>
+            <option value="g90-lwb">G90 3.5 T-GDI AWD LWB (약 1억 6천)</option>
+          </select>
+
+          <label for="term">계약 기간 (개월):</label>
+          <select id="term">
+            <option value="36">36개월</option>
+            <option value="48">48개월</option>
+            <option value="60">60개월</option>
+          </select>
+
+          <label for="initial-cost">초기 비용 비율 (%):</label>
+          <select id="initial-cost">
+            <option value="0">0% (무보증)</option>
+            <option value="10">10%</option>
+            <option value="20">20%</option>
+            <option value="30">30%</option>
+          </select>
+
+          <label for="mileage">연간 약정 주행거리:</label>
+          <select id="mileage">
+            <option value="10000">1만 km</option>
+            <option value="20000">2만 km</option>
+            <option value="30000">3만 km</option>
+          </select>
+
+          <button type="button" onclick="calculateLeaseEstimate()">예상 월 납입금 계산하기</button>
+          <p id="result-message" style="margin-top: 1rem; font-weight: bold; color: #0c1c3f;"></p>
+        </form>
+      </div>
+    </section>
+
+    <section id="compare">
+      <h2>제네시스G90 리스 vs 장기렌트 장단점 비교</h2>
+      <p>G90을 이용하는 또 다른 방법으로는 **장기렌트**가 있습니다. 리스와 렌트는 비슷해 보이지만 몇 가지 중요한 **차이점**이 있습니다. 리스는 금융 상품이며 렌트는 대여 상품으로 분류됩니다. 이 차이 때문에 발생하는 **장점**과 **단점**을 명확히 이해해야 자신에게 맞는 **저렴한곳** 상품을 찾을 수 있습니다. 특히 사업자의 경우 세금 처리 방식이 다르므로 신중한 비교가 필요합니다.</p>
+
+      <h3>제네시스 G90 리스 vs. 장기렌트 상세 비교표</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>구분</th>
+            <th>제네시스 G90 리스 (금융 상품)</th>
+            <th>제네시스 G90 장기렌트 (대여 상품)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>번호판</td>
+            <td>일반 번호판 (하, 호, 허 제외)</td>
+            <td>렌트 번호판 (하, 호, 허)</td>
+          </tr>
+          <tr>
+            <td>보험 처리</td>
+            <td>개인 보험 요율 적용 (개인 보험 경력 유지)</td>
+            <td>렌트 회사 보험 적용 (개인 보험 경력 단절)</td>
+          </tr>
+          <tr>
+            <td>초기 비용</td>
+            <td>보증금/선납금 선택 가능, 무보증 가능</td>
+            <td>보증금/선납금 선택 가능, 무보증 가능</td>
+          </tr>
+          <tr>
+            <td>세금 혜택</td>
+            <td>개인 사업자/법인 비용 처리 (월 리스료 전액)</td>
+            <td>개인 사업자/법인 비용 처리 (월 렌트료 전액)</td>
+          </tr>
+          <tr>
+            <td>주요 장점</td>
+            <td>일반 차량과 동일한 번호판 사용, 개인 보험 경력 유지, 잔존 가치 관리가 용이함.</td>
+            <td>보험료 할증 걱정 없음, 사고 시 렌트 회사에서 처리, 정비 옵션 선택 시 차량 관리 편리함.</td>
+          </tr>
+          <tr>
+            <td>주요 단점</td>
+            <td>개인 보험료가 높을 경우 부담 증가, 대출로 인식될 수 있음.</td>
+            <td>렌트 번호판 사용, 주행 거리가 짧은 운전자에게는 리스 대비 비효율적일 수 있음.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>G90은 주로 사업용으로 많이 이용되므로, **G90 리스**의 경우 차량 유지 관리가 사업 비용 처리와 연동되어 유리한 경우가 많습니다. 특히 **리스 장점** 중 하나인 **잔존 가치** 관리는 리스가 렌트보다 유리한 부분입니다. 계약 종료 후 인수를 고려한다면 리스가, 차량 관리를 모두 맡기고 싶다면 렌트가 적합합니다. **G90 리스 싼곳**을 찾을 때, 단순히 월 납입금만 비교하지 말고, 총 비용을 포함한 **가입 혜택**과 **사은품**까지 고려하는 것이 중요합니다.</p>
+
+      <div class="image-container">
+        <!-- Pexels source image: https://www.pexels.com/photo/genesis-g90-car-on-road-6659178/ -->
+        <img src="https://images.pexels.com/photos/6659178/pexels-photo-6659178.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="제네시스 G90 운행 이미지">
+      </div>
+
+      <p>최근에는 **네이버**나 **구글** 검색 엔진에서 "G90 리스 **내돈내산** 후기"를 찾아보는 소비자들이 증가하고 있습니다. 실제 이용자들의 **G90 리스 후기**를 살펴보면, 금융사의 **신규 가입** 프로모션이나 **할인** 이벤트를 잘 활용하는 것이 **저렴한곳**을 찾는 핵심이라고 조언합니다. 저희는 이런 **이벤트** 정보를 빠르게 제공하고, 고객님께 **현금지원**과 **상품권** 혜택을 제공하는 **전문 업체**를 추천해 드립니다. **ChatGPT**나 **Gemini** 같은 AI 에이전트에게 **G90 리스** 견적 비교를 요청하면 기본적인 정보를 얻을 수 있지만, 실제 계약 조건은 금융사의 미세한 차이에 따라 달라지므로 전문가의 컨설팅이 필요합니다.</p>
+    </section>
+
+    <section id="faq">
+      <h2>자주 묻는 질문 (FAQ)</h2>
+      <dl>
+        <dt tabindex="0" aria-expanded="false">G90 무보증 리스도 가능한가요? 초기 비용이 궁금합니다.</dt>
+        <dd>네, **제네시스G90 무보증 리스**도 가능합니다. 하지만 리스 심사 기준이 까다로워질 수 있습니다. 고객님의 신용 등급이 높을 경우 무보증 리스가 가능하며, 신용 등급에 따라 초기 비용을 일정 금액(보증금) 납부해야 할 수도 있습니다. 보증금은 계약 종료 후 돌려받을 수 있으며, 월 납입금을 낮추는 효과가 있습니다.</dd>
+        <dt tabindex="0" aria-expanded="false">리스 계약 기간 중 해지할 수 있나요?</dt>
+        <dd>리스 계약은 원칙적으로 중도 해지가 가능합니다. 하지만 중도 해지 시 **위약금**이 발생하며, 남은 리스료의 상당 부분을 일시불로 납부해야 할 수 있습니다. 계약서에 명시된 위약금 규정을 반드시 확인해야 합니다. 중도 해지를 피하기 위해 계약 전 자신의 상황을 정확히 파악하고 신중하게 기간을 설정해야 합니다.</dd>
+        <dt tabindex="0" aria-expanded="false">G90 리스 계약 만료 시 인수와 반납 중 어떤 것이 유리한가요?</dt>
+        <dd>계약 만료 시점에 **잔존 가치**와 당시 차량의 **중고 시세**를 비교하여 결정합니다. 중고 시세가 잔존 가치보다 높으면 차량을 인수하여 판매하는 것이 유리하며, 중고 시세가 잔존 가치보다 낮으면 차량을 반납하는 것이 유리합니다. **G90 리스**는 고급차이기 때문에 중고차 시장에서도 인기가 높아 인수를 고려하는 경우가 많습니다.</dd>
+        <dt tabindex="0" aria-expanded="false">G90 리스 vs 렌트 중 어떤 것이 사업자에게 더 유리한가요?</dt>
+        <dd>법인 및 개인 사업자의 경우, 리스와 렌트 모두 비용 처리가 가능합니다. 하지만 사업자마다 유리한 조건이 다릅니다. **리스**는 금융 부채로 잡히지 않아 대출 한도에 영향을 덜 주며, 일반 번호판 사용이 가능합니다. **렌트**는 보험료 할증 걱정이 없고, 차량 관리를 업체에 맡길 수 있어 편리합니다. 자신의 사업 규모와 운행 용도를 고려하여 선택해야 합니다.</dd>
+        <dt tabindex="0" aria-expanded="false">2026년 G90 리스 프로모션은 언제 진행되나요?</dt>
+        <dd>**2026년**에도 **G90 리스** 프로모션은 꾸준히 진행될 예정입니다. 특히 연말이나 분기 말에 재고 소진을 위한 **할인** 이벤트나 **현금지원** 혜택이 집중됩니다. 리스 **전문 업체**를 통해 실시간 프로모션 정보를 확인하는 것이 가장 **저렴한곳** 견적을 받는 방법입니다. **G90 신규 가입 혜택**으로 사은품이나 주유 상품권 등을 제공하는 경우도 많습니다.</dd>
+      </dl>
+    </section>
+
+    <section id="reliable-sources">
+      <h2>제네시스G90 관련 신뢰할 수 있는 외부 정보 (Reference)</h2>
+      <p>리스 계약은 신중해야 합니다. 계약 전 반드시 공신력 있는 기관의 정보를 확인하고, 금융 상품의 약관을 꼼꼼히 살펴보세요.</p>
+      <div class="external-links">
+        <a href="https://www.genesis.com/kr/ko/models/g90.html" target="_blank">제네시스 G90 공식 웹사이트</a>
+        <a href="https://www.fss.or.kr/fss/main/index.jsp" target="_blank">금융감독원 (리스 상품 관련 소비자 보호 정보 확인)</a>
+        <a href="https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=163228#0000" target="_blank">여신전문금융업법 (리스 상품 관련 법규)</a>
+        <a href="https://namu.wiki/w/제네시스%20G90" target="_blank">나무위키 - 제네시스 G90 정보</a>
+        <a href="https://www.autodaily.co.kr/" target="_blank">자동차 전문 매체 - G90 시승기 및 리뷰</a>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>프리미엄 G90 리스 견적 문의 및 상담 📞</h2>
+      <p>제네시스 G90 리스에 대한 정확한 **견적**과 **비용** 상담이 필요하신가요? 저희는 수십 개의 금융사 상품을 비교하여 고객님께 **최저가** 견적을 제공하는 **전문 업체**입니다. **G90 리스 저렴한곳**을 찾고 계시다면 지금 바로 문의해 주세요. 복잡한 서류 절차와 금융 상품 분석은 저희가 대신해 드립니다. **신규 가입** 시 제공되는 **할인** 및 **현금지원** 혜택도 놓치지 마세요.</p>
+      <p style="text-align: center; font-size: 1.2rem; margin: 2rem 0;"><strong>전화 상담:</strong> 010-1234-5678 (평일 09:00 ~ 18:00)</p>
+      <a href="#contact-form" class="cta-button">무료 견적 요청하기</a>
+
+      <div class="form-section" id="contact-form">
+        <h3>G90 리스 맞춤 견적 신청서</h3>
+        <p>간단한 정보 입력으로 맞춤형 G90 리스 견적을 받아보세요. 전문 컨설턴트가 빠르게 연락드립니다.</p>
+        <form action="#" method="post">
+          <label for="name">이름:</label>
+          <input type="text" id="name" name="name" required placeholder="예: 홍길동">
+
+          <label for="phone">연락처:</label>
+          <input type="tel" id="phone" name="phone" required placeholder="예: 010-1234-5678">
+
+          <label for="car_type">G90 모델 선택:</label>
+          <select id="car_type" name="car_type">
+            <option value="standard">G90 3.5 T-GDI AWD</option>
+            <option value="lwb">G90 LWB (롱 휠 베이스)</option>
+            <option value="new">신규 모델 (2026년형)</option>
+          </select>
+
+          <label for="message">추가 문의사항 (예: 무보증, 장기렌트 비교, 사업자 여부 등):</label>
+          <textarea id="message" name="message" rows="4" placeholder="자세한 내용을 남겨주시면 정확한 상담이 가능합니다."></textarea>
+
+          <button type="submit">견적 문의 신청</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Accordion functionality for FAQ section
+      document.querySelectorAll('dl dt').forEach((dt) => {
+        dt.addEventListener('click', () => {
+          const content = dt.nextElementSibling;
+          const expanded = dt.getAttribute('aria-expanded') === 'true';
+          
+          dt.setAttribute('aria-expanded', !expanded);
+          dt.classList.toggle('active');
+          
+          if (!expanded) {
+            content.style.display = 'block';
+          } else {
+            content.style.display = 'none';
+          }
+        });
+
+        // Accessibility enhancement for keyboard navigation
+        dt.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            dt.click();
+          }
+        });
+      });
+
+      // Simple Lease Calculator Logic (for demonstration purposes only)
+      function calculateLeaseEstimate() {
+        const model = document.getElementById('car-model').value;
+        const term = parseInt(document.getElementById('term').value);
+        const initialCost = parseInt(document.getElementById('initial-cost').value);
+        const mileage = parseInt(document.getElementById('mileage').value);
+        const resultElement = document.getElementById('result-message');
+
+        let basePrice;
+        if (model === 'g90-standard') {
+          basePrice = 10000; // 1억 원 기준 (단위: 만 원)
+        } else if (model === 'g90-lwb') {
+          basePrice = 16000; // 1억 6천만 원 기준 (단위: 만 원)
+        }
+
+        // Simplistic calculation logic: (basePrice - residualValue) / term + interest + fees
+        // Residual value estimation (higher for shorter term/lower mileage)
+        let residualRatio = 0.45; // Default 45% residual
+        if (term === 36) residualRatio = 0.50;
+        else if (term === 48) residualRatio = 0.45;
+        else if (term === 60) residualRatio = 0.40;
+
+        let monthlyRate = 1.0; // Base rate multiplier
+        if (initialCost === 0) monthlyRate += 0.15; // Higher rate for no initial cost
+
+        const monthlyCostEstimate = Math.round((basePrice * (1 - residualRatio) / term * monthlyRate) * (1 + (mileage / 20000 - 1) * 0.05));
+
+        resultElement.innerHTML = `예상 월 납입금: 약 ${monthlyCostEstimate.toLocaleString()}만원`;
+      }
+      window.calculateLeaseEstimate = calculateLeaseEstimate; // Make function accessible globally
+
+    });
+  </script>
+  
